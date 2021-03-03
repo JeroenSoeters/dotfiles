@@ -46,3 +46,9 @@ export PATH="${PATH}:${HOME}/depot_tools"
 # Add bash completion for Chromium depot_tools
 # shellcheck source=/dev/null
 if [ -f "${HOME}/depot_tools/git_cl_completion.sh" ]; then . "${HOME}/depot_tools/git_cl_completion.sh"; fi
+
+# set gnumake 4.3 to default make
+export PATH=/usr/local/opt/make/libexec/gnubin:${PATH}
+
+# .local/bin
+export PATH=${HOME}/.local/bin:${PATH}
