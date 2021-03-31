@@ -8,3 +8,4 @@ for file in ~/.{bashrc,bash_prompt,aliases,functions,path,dockerfunc,extra,expor
 	fi
 done
 unset file
+source "$HOME/.cargo/env"

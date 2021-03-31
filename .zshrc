@@ -104,12 +104,12 @@ source $HOME/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jeroensoeters/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jeroensoeters/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jeroensoeters/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jeroensoeters/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jeroensoeters/dev/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jeroensoeters/dev/tools/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jeroensoeters/dev/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jeroensoeters/dev/tools/google-cloud-sdk/completion.zsh.inc'; fi
