@@ -125,6 +125,13 @@ source $ZSH/oh-my-zsh.sh
 # opam configuration
 [[ ! -r /home/jeroen/.opam/opam-init/init.zsh ]] || source /home/jeroen/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
+# keybinding for tmux-sessionizer
+function run_tmux_sessionizer() {
+    BUFFER="tmux-sessionizer"
+    zle accept-line
+}
+zle -N run_tmux_sessionizer
+bindkey "^f" run_tmux_sessionizer
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
