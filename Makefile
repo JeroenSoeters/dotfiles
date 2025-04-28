@@ -4,7 +4,7 @@ all: scripts dotfiles ## Installs the scripts directory files and the dotfiles.
 .PHONY: scripts
 scripts: ## Installs the scripts directory files.
 	# add aliases for things in ~/.local/share
-	mkdir -p $(HOME)/.local/share;
+	mkdir -p $(HOME)/.local/share/scripts;
 	for file in $(shell find $(CURDIR)/scripts -type f -not -name "*-backlight" -not -name ".*.swp"); do \
 		f=$$(basename $$file); \
 		sudo ln -sf $$file $(HOME)/.local/share/scripts/$$f; \

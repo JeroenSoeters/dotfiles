@@ -2,16 +2,16 @@
 
 # Check for various OS openers. Quit as soon as we find one that works.
 for opener in browser-exec xdg-open cmd.exe cygstart "start" open; do
-	if command -v $opener >/dev/null 2>&1; then
-		if [[ "$opener" == "cmd.exe" ]]; then
-			# shellcheck disable=SC2139
-			alias open="$opener /c start";
-		else
-			# shellcheck disable=SC2139
-			alias open="$opener";
-		fi
-		break;
-	fi
+    if command -v $opener >/dev/null 2>&1; then
+        if [[ "$opener" == "cmd.exe" ]]; then
+            # shellcheck disable=SC2139
+            alias open="$opener /c start";
+        else
+            # shellcheck disable=SC2139
+            alias open="$opener";
+        fi
+        break;
+    fi
 done
 
 # Linux specific aliases
@@ -34,9 +34,9 @@ alias gc=". /usr/local/bin/gitdate && git commit -v "
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
+    colorflag="--color"
 else # OS X `ls`
-	colorflag="-G"
+    colorflag="-G"
 fi
 
 # List all files colorized in long format
@@ -106,8 +106,8 @@ alias map="xargs -n1"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	# shellcheck disable=SC2139,SC2140
-	alias "$method"="lwp-request -m \"$method\""
+    # shellcheck disable=SC2139,SC2140
+    alias "$method"="lwp-request -m \"$method\""
 done
 
 # Kill all the tabs in Chrome to free up memory
@@ -145,9 +145,9 @@ alias vim=nvim
 # dev
 alias cdd='cd ~/dev'
 
-# instana repos I use a lot
-alias cdb='cd ~/dev/instana/backend'
-alias cdd='cd ~/dev'
-alias cde='cd ~/dev/instana/ebpf-sensor'
-alias cdi='cd ~/dev/instana'
-alias cds='cd ~/dev/instana/sensors'
+# Tmux sessionizer
+alias ts=tmux-sessionizer
+
+# Python3
+alias python=python3
+alias pip=pip3
