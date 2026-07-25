@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Autostart tmux
+# Autostart tmux (suppressed when ~/.no-tmux exists — for clean-terminal testing)
 ZSH_TMUX_AUTOSTART=true
+[[ -f "$HOME/.no-tmux" ]] && ZSH_TMUX_AUTOSTART=false
 
 # GOPATH
 export PATH=$PATH:$HOME/go/bin
@@ -20,6 +21,7 @@ export PATH=$PATH:$HOME/.local/share/pkl
 export PATH=$PATH:$HOME/.local/share/scripts
 
 # Imports
+source ~/.path
 source ~/.aliases
 source ~/.exports
 
@@ -101,11 +103,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+else
+    export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -133,8 +135,18 @@ function run_tmux_sessionizer() {
 zle -N run_tmux_sessionizer
 bindkey "^f" run_tmux_sessionizer
 
+export PATH="$HOME/.claude/local:$PATH"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export PATH="/usr/local/bin:$PATH"
+
+export PATH=/opt/pel/formae/bin:$PATH
+
+# opencode
+export PATH=/home/jeroen/.opencode/bin:$PATH
+
+# user-level npm global bin (cyrus-ai, etc.)
+export PATH="$HOME/.npm-global/bin:$PATH"

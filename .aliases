@@ -151,3 +151,6 @@ alias ts=tmux-sessionizer
 # Python3
 alias python=python3
 alias pip=pip3
+
+# Claude
+alias cds="claude --dangerously-skip-permissions"

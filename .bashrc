@@ -172,3 +172,7 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 source "$HOME/.cargo/env"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/jeroen/.sdkman"
+[[ -s "/home/jeroen/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jeroen/.sdkman/bin/sdkman-init.sh"

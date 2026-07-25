@@ -23,3 +23,9 @@ export PATH=${HOME}/.local/bin:${PATH}
 
 # .local/share/scripts
 export PATH=${HOME}/.local/share/scripts:${PATH}
+
+# snap binaries
+export PATH=/snap/bin:${PATH}
+
+# formae
+export PATH=/opt/pel/bin:${PATH}
