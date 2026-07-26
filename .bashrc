@@ -12,8 +12,12 @@ source ~/.local/share/omarchy/default/bash/rc
 
 # --- personal additions (from ~/dotfiles) ---
 
-# pel tooling + personal scripts on PATH
-export PATH="/opt/pel/bin:$HOME/.local/share/scripts:$PATH"
+# Split-out shell config: PATH, env vars, aliases, functions.
+# (.path already puts /opt/pel/bin and ~/.local/share/scripts on PATH)
+for f in ~/.path ~/.exports ~/.aliases ~/.functions; do
+	[ -r "$f" ] && source "$f"
+done
+unset f
 
 # Ctrl-f -> tmux-sessionizer (fzf-based project switcher)
 bind -x '"\C-f": tmux-sessionizer'
