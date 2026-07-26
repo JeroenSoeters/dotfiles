@@ -1,72 +1,30 @@
 # dotfiles
 
-[![Travis CI](https://img.shields.io/travis/jessfraz/dotfiles.svg?style=for-the-badge)](https://travis-ci.org/jessfraz/dotfiles)
+Personal dotfiles for an **Arch + [Omarchy](https://omarchy.org)** (Hyprland/Wayland, bash) setup.
+Originally forked from [jessfraz/dotfiles](https://github.com/jessfraz/dotfiles), since trimmed
+down to only the pieces actually in use.
 
-**Table of Contents**
+## What's here
 
-<!-- toc -->
+| File | Purpose |
+|------|---------|
+| `.tmux.conf` | tmux config. `C-z` prefix, `\|`/`-` splits. Colors follow the OS theme via terminal palette names (no plugin/TPM). |
+| `scripts/tmux-sessionizer` | fzf-based project/session switcher, bound to `Ctrl-f`. |
+| `.bashrc` | Omarchy base (`source ~/.local/share/omarchy/default/bash/rc`) plus personal PATH additions and the `Ctrl-f` keybind. |
+| `.gitconfig` | git aliases and settings (not currently symlinked; Omarchy manages `~/.config/git`). |
+| `.aliases`, `.functions`, `.exports`, `.path` | Reference shell snippets (not wired in — kept to cherry-pick from). |
+| `.gnupg/` | gpg / gpg-agent config. |
+| `gitignore` | Global gitignore template. |
 
-- [About](#about)
-  * [Installing](#installing)
-  * [Customizing](#customizing)
-- [Resources](#resources)
-  * [`.vim`](#vim)
-- [Contributing](#contributing)
-  * [Running the tests](#running-the-tests)
+## Install
 
-<!-- tocstop -->
-
-## About
-
-### Installing
-
-```console
-$ make
-```
-
-This will create symlinks from this repo to your home folder.
-
-### Customizing
-
-Save env vars, etc in a `.extra` file, that looks something like
-this:
+There's no Makefile — symlink only what you want:
 
 ```bash
-###
-### Git credentials
-###
-
-GIT_AUTHOR_NAME="Your Name"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="email@you.com"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
-GH_USER="nickname"
-git config --global github.user "$GH_USER"
-
-###
-### Gmail credentials for mutt
-###
-export GMAIL=email@you.com
-export GMAIL_NAME="Your Name"
-export GMAIL_FROM=from-email@you.com
+ln -sfn "$PWD/.tmux.conf"              ~/.tmux.conf
+ln -sfn "$PWD/.bashrc"                 ~/.bashrc
+mkdir -p ~/.local/share/scripts
+ln -sfn "$PWD/scripts/tmux-sessionizer" ~/.local/share/scripts/tmux-sessionizer
 ```
 
-## Resources
-
-### `.vim`
-
-For my `.vimrc` and `.vim` dotfiles see
-[github.com/jessfraz/.vim](https://github.com/jessfraz/.vim).
-
-## Contributing
-
-### Running the tests
-
-The tests use [shellcheck](https://github.com/koalaman/shellcheck). You don't
-need to install anything. They run in a container.
-
-```console
-$ make test
-```
+`~/.tmux.conf` takes precedence over Omarchy's `~/.config/tmux/tmux.conf`.
